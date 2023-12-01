@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <link rev=made href="mailto:ejeong100@gmail.com">
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #84272740;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+            .container {
+                width: 550px;
+                margin: auto;
+            }
+            form {
+                background: #fff;
+                padding: 20px;
+                margin-top: 50px;
+                box-shadow: 0px 0px 10px #aaa;
+                border-radius: 10px;
+                text-align: center;
+            }
+            h1 {
+                text-align: center;
+                color: #333;
+                font-size: 38px;
+                font-weight: bold; 
+            }
+            label {
+                display: block;
+                margin: 10px 0 5px;
+                color: #555;
+                font-size: 22px; 
+                font-weight: bold; 
+            }
+            
+            input[type="text"]{
+                width: 200px;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                margin-bottom: 10px;
+            }
+            input[type="email"]{
+                width: 200px;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                margin-bottom: 10px;
+            }
+            input[type="date"]{
+                width: 100px;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                margin-bottom: 10px;
+            }
+            input[type="mobilenumber"],
+            textarea,
+            select {
+                width: 200px;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                margin-bottom: 10px;
+            }
+            input[type="password"],
+            input[type="file"],
+            input[type="number"],
+            input[type="tel"],
+            input[type="color"],
+            input[type="range"],
+            input[type="time"] {
+                width: 200px;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                margin-bottom: 10px;
+            }
+            input[type="radio"] {
+                margin-right: 5px;
+            }
+            input[type="checkbox"] {
+                margin-right: 5px;
+            }
+            .checkbox-group, ol {
+                padding-inline-start: 20px;
+            }
+            input[type="submit"],
+            input[type="button"] {
+                display: inline-block;
+                width: 200px;
+                height: 60px; 
+                background: #a92424;
+                color: #fff;
+                border: none;
+                padding: 10px;
+                margin-top: 20px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 20px; 
+                font-weight: bold; 
+            }
+            input[type="submit"]:hover,
+            input[type="button"]:hover {
+                display: inline-block;
+                background: #761111;
+                width: 200px; 
+                height: 60px; 
+                color: #fff;
+                border: none;
+                padding: 10px;
+                margin-top: 20px;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 20px; 
+                font-weight: bold; 
+                
+            }
+            .small-text {
+                font-size: 0.9em; 
+            }
+            .small-bold-text {
+                color: #333;
+                font-weight: bold; 
+                font-size: 1.0em; 
+            }
+            .intro-input {
+                font-family: 'Arial', sans-serif;
+                width: 80%; 
+                height: 300px; 
+            }
+            #imagePreview {
+                display: none;
+                width: 120px;
+                height: 150px;
+                border: 2px solid #ddd;  
+                margin: 0 auto;  
+                border-radius: 5px;  
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+            $('form').submit(function(event) {
+                event.preventDefault(); 
+                var formData = $(this).serialize(); 
+        
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://cspro.sogang.ac.kr/~cse20191659/cgi-bin/db_insert.php',
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response); 
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', status, error);
+                    }
+                });
+            });
+        });
+        </script>  
+    </head>
+    <body>
+        <div class="container">
+            <form method="post" enctype="multipart/form-data">
+                <br><br><img src="soganguniv.png" alt="Sogang University Logo" style="display: block; margin: 0 auto 20px;"><br><br>
+                <h1>Get started</h1>
+                <p class="small-text">Register for Sogang University Internet Programming class<br>Please fill out all the required areas</p><br><br>
+        <P><br><br>
+            <label>Username</label> 
+                <INPUT NAME = "name" TYPE= "text" size="20"><br><br>
+        <P><br><br>
+        <p>
+            <label for="userid">ID</label>
+            <input name="userid" type="text" id="userid" required placeholder="Enter your user ID">
+        </p><br><br><br>         
+        <P> 
+            <label>Password</label>
+            <INPUT NAME="password" TYPE="password" size="20" required>
+        </P><br><br><br><br>
+        
+            <label>Email address</address></label>
+                <INPUT TYPE="email" name="email_address" placeholder="name@domain.com"
+                    required />     
+        </P><br><br><br><br><br>
+        <P> 
+            <label>
+                Organization
+            </label>
+                <INPUT NAME = "org" TYPE= text><br><br>
+        </P><br><br>
+        <p>
+            <label>Major </label>
+                <select name="major" required>
+                    <option value="" disabled selected>Select your Major</option>
+                    <optgroup label="인문대학">
+                        <option value="국어국문학과">국어국문학과</option>
+                        <option value="사학과">사학과</option>
+                        <option value="철학과">철학과</option>
+                        <option value="종교학과">종교학과</option>
+                        <option value="영미어문전공">영미어문전공</option>
+                        <option value="미국문화전공">미국문화전공</option>
+                        <option value="유럽문화학과">유럽문화학과</option>
+                        <option value="중국문화학과">중국문화학과</option>
+                    </optgroup>
+                    <optgroup label="사회과학대학">
+                        <option value="사회학과">사회학과</option>
+                        <option value="정치외교학과">정치외교학과</option>
+                        <option value="심리학과">심리학과</option>
+                    </optgroup>
+                    <optgroup label="자연과학대학">
+                        <option value="수학과">수학과</option>
+                        <option value="물리학과">물리학과</option>
+                        <option value="화학과">화학과</option>
+                        <option value="생명과학과">생명과학과</option>
+                    </optgroup>
+                    <optgroup label="공과대학">
+                        <option value="전자공학과">전자공학과</option>
+                        <option value="컴퓨터공학과">컴퓨터공학과</option>
+                        <option value="화학생명공학과">화학생명공학과</option>
+                        <option value="기계공학과">기계공학과</option>
+                        <option value="인공지능학과">인공지능학과</option>
+                        <option value="시스템반도체학과">시스템반도체학과</option>
+                    </optgroup>
+                    <optgroup label="경제대학">
+                        <option value="경제학과">경제학과</option>
+                    </optgroup>
+                    <optgroup label="경영대학">
+                        <option value="경영학과">경영학과</option>
+                    </optgroup>
+                    <optgroup label="지식융합미디어대학">
+                        <option value="지식융합미디어학과">지식융합미디어학과</option>
+                        <option value="신문방송학과">신문방송학과</option>
+                        <option value="미디어&엔터테인먼트학과">미디어&엔터테인먼트학과</option>
+                        <option value="Art&Technology">Art&Technology</option>
+                        <option value="Global Korean Studies">Global Korean Studies</option>
+                    </optgroup>
+                </select>
+        </p><br><br><br>
+        <p>
+            <label>Gender</label>
+            <P class="small-text">
+            <input type="radio" name="gender" value="male" required> Male
+            <input type="radio" name="gender" value="female" required> Female
+            <input type="radio" name="gender" value="other" required> Other
+            <input type="radio" name="gender" value="prefer_not_to_say" required> Prefer not to say
+            </P>
+        </p><br><br><br>        
+        <p>
+            <label>Grade</label>
+            <p class="small-text">
+                <input type="radio" name="grade" value="freshman" required> Freshman
+                <input type="radio" name="grade" value="sophomore" required> Sophomore
+                <input type="radio" name="grade" value="junior" required> Junior 
+                <input type="radio" name="grade" value="senior" required> Senior 
+            </p>
+        </p>
+        <br><br><br><br>
+            <label>Age</label>
+            <input type="number" name="age" min="0">
+        </p><br><br>
+        <P> <label>Address</label> <INPUT NAME="address" TYPE="text"><br><br>
+        <br><br>
+        <p>
+            <label>Mobile number</label>
+               <input type = "tel" name="mobile_number" placeholder="###-####-####" 
+                  pattern = "\d{3}-\d{4}-\d{4}" required /> 
+        </p><br><br><br>
+        <P>
+            <label> Birthday </label>
+                <INPUT NAME="birthday" TYPE="date"/>
+                    (yyyy-mm-dd) 
+        </P><br><br><br>
+        <p>
+            <label> MBTI</label>
+                <select name="mbti" required>
+                    <option value="" disabled selected>Select your MBTI</option>
+                    <option value="ISTJ">ISTJ</option>
+                    <option value="ISFJ">ISFJ</option>
+                    <option value="INFJ">INFJ</option>
+                    <option value="INTJ">INTJ</option>
+                    <option value="ISTP">ISTP</option>
+                    <option value="ISFP">ISFP</option>
+                    <option value="INFP">INFP</option>
+                    <option value="INTP">INTP</option>
+                    <option value="ESTP">ESTP</option>
+                    <option value="ESFP">ESFP</option>
+                    <option value="ENFP">ENFP</option>
+                    <option value="ENTP">ENTP</option>
+                    <option value="ESTJ">ESTJ</option>
+                    <option value="ESFJ">ESFJ</option>
+                    <option value="ENFJ">ENFJ</option>
+                    <option value="ENTJ">ENTJ</option>
+                </select>
+        </p><br><br><br>
+        <p>
+            <label> Interests</label>
+            <P class="small-text">
+                <input type="checkbox" name="interests[]" value="Sports"> Sports
+                <input type="checkbox" name="interests[]" value="Technology"> Technology
+                <input type="checkbox" name="interests[]" value="Arts"> Arts
+                <input type="checkbox" name="interests[]" value="Science"> Science
+                <br><input type="checkbox" name="interests[]" value="Music"> Music
+                <input type="checkbox" name="interests[]" value="Travel"> Travel
+                <input type="checkbox" name="interests[]" value="Reading"> Reading
+                <input type="checkbox" name="interests[]" value="Gaming"> Gaming
+                
+            <br><br>
+            Other interests:
+                <input name="other_interests" type="text" placeholder="Type any other interests here..." size="50">
+            </P>
+        </p>
+        <br><br><br><br><br><br><br>
+        
+        <p>
+            <input type = "submit" value = "Create Account" />
+            <input type="button" value="Search Users" onclick="location.href='http://cspro.sogang.ac.kr/~cse20191659/search.html';">
+        </p><br><br>
+    </form>
+    </div>
+    </body>
+</html>
