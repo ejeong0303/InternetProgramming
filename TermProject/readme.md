@@ -1,4 +1,4 @@
-# Project Name
+# Project Name: Eat It!
 
 ## Introduction
 This project is built using Django for the backend and React for the frontend. It provides a seamless experience by integrating a robust Django backend server with a dynamic and responsive React frontend.
