@@ -29,10 +29,12 @@ npm install
 ### Running the Backend Server
 To start the Django backend server, use the following command:
 `python manage.py runserver`
-The backend server will start, typically on `http://localhost:8000`.
+
+- The backend server will start, typically on `http://localhost:8000`.
 
 ### Running the Frontend Server
 To start the React frontend server, use this command:
 `npm start`
-The frontend server will start, and the application should be accessible on `http://localhost:3000`.
+
+- The frontend server will start, and the application should be accessible on `http://localhost:3000`.
 
